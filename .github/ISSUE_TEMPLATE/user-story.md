@@ -6,7 +6,7 @@ labels: User story
 assignees: ''
 
 ---
-
+**Author** <...>
 **As a** <role> **I want to** <....> **so that** <...>
 
 **Description**
@@ -22,5 +22,10 @@ E.g.: Epic #1
 **Labels to be added**
 "User story", Correspondind Functionality (e.g. User), Priority ("pri: "), "Corresponding Epic"
 
-### Tasks 
-1. - [ ] sample task.
+### Invest criterias
+1. - [ ] Independent.
+2. - [ ] Negotiable.
+3. - [ ] Valuable.
+4. - [ ] Estimatable.
+5. - [ ] Small.
+6. - [ ] Testable.
