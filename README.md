@@ -11,3 +11,5 @@
 - **Русанов Данііл**
 - **Тарасюк Назарій**
 - **Домбровський Артур**
+
+![alt text](https://media.discordapp.net/attachments/1354179789069750412/1357090469057794199/image.png?ex=67eef07d&is=67ed9efd&hm=7f2f14c9497ac34f298318a7cf500f690261d0a789d32c0a9af7f3a049e12700&=&format=webp&quality=lossless&width=1392&height=198)
