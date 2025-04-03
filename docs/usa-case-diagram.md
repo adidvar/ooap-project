@@ -12,4 +12,4 @@ graph TD;
     G -.->|extend| B
 
 ```
-![alt text](https://cdn.discordapp.com/attachments/1354179789069750412/1357264258492141668/image.png?ex=67ef9257&is=67ee40d7&hm=ec70cff5767e800ba493875d4004c1b5a52e59ffb0d8c86d94b8c4a5d258c193&)
+![alt text](https://cdn.discordapp.com/attachments/1354179789069750412/1357279791702736966/image.png?ex=67efa0cf&is=67ee4f4f&hm=59c772984cfe97acfebf38f6a802572c90f3c017bb19832de37d6f13057a7c92&)
