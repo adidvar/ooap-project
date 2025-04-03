@@ -11,4 +11,4 @@ graph TD;
     H[Редагування транзакції]-.-> |extend|G;
 
 ```
-![alt text](https://media.discordapp.net/attachments/1354179789069750412/1357262885793038366/image.png?ex=67ef9110&is=67ee3f90&hm=2377721a35b13776e25ce7cdf134b6ef49c3a94b1330ed31bf6c3a369b45b365&=&format=webp&quality=lossless)
+![alt text](https://cdn.discordapp.com/attachments/1354179789069750412/1357264258492141668/image.png?ex=67ef9257&is=67ee40d7&hm=ec70cff5767e800ba493875d4004c1b5a52e59ffb0d8c86d94b8c4a5d258c193&)
