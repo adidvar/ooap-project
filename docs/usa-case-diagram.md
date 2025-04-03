@@ -10,4 +10,4 @@ graph TD;
     A[Student] -->|Завантаження історії транзакцій| G(Імпортувати історію транзакцій);
 
 ```
-![alt text](https://cdn.discordapp.com/attachments/1354179789069750412/1357090469057794199/image.png?ex=67eef07d&is=67ed9efd&hm=7f2f14c9497ac34f298318a7cf500f690261d0a789d32c0a9af7f3a049e12700&)
+![alt text](https://cdn.discordapp.com/attachments/1354179789069750412/1357262885793038366/image.png?ex=67ef9110&is=67ee3f90&hm=2377721a35b13776e25ce7cdf134b6ef49c3a94b1330ed31bf6c3a369b45b365&)
