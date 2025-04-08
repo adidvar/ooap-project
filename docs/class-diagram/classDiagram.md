@@ -7,7 +7,6 @@ class Student {
 - String name
 - String email
 + viewBalance()
-+ addExpense()
 + setPaymentReminder()
 + createFinancialGoal()
 + importTransactions()
@@ -21,16 +20,6 @@ class Balance {
 + getBalance()
   }
 
-class Expense {
-- Double amount
-- Date date
-- Category category
-- String description
-+ create()
-+ edit()
-+ delete()
-  }
-
 class Category {
 - String id
 - String name
@@ -39,6 +28,8 @@ class Category {
 + edit()
 + delete()
   }
+
+class PaymentManager { }
 
 class Payment {
 - Double amount
@@ -100,11 +91,10 @@ class ConsultationRequest {
   }
 
 %% Control classes
-class ExpenseManager {
-+ addExpense(Expense)
+class FinanceManager {
 + updateBalance(Transaction)
-+ getExpensesByCategory()
-+ getMonthlyExpenses()
++ getFinancesByCategory()
++ getMonthlyFinances()
   }
 
 class NotificationManager {
@@ -120,31 +110,36 @@ class GoalManager {
   }
 
 class ImportManager {
-+ importTransactions()
++ importTransactions(File)
++ addTransaction(Transaction)
++ deleteTransaction(Transaction)
++ editTransaction(Transaction)
   }
 
 %% Relationships
-Student *-- Balance
-Student o-- Expense
-Student o-- Payment
-Student o-- FinancialGoal
-Student o-- Notification
-Student o-- Transaction
-Student o-- ConsultationRequest
 
-Expense *-- Category
 Transaction *-- Category
 Transaction *-- TransactionType
 
-ExpenseManager o-- Expense
-ExpenseManager o-- Transaction
+FinanceManager o-- Transaction
 
-NotificationManager o-- Payment
-NotificationManager o-- Notification
+PaymentManager *-- Payment
+
+NotificationManager *-- Notification
+
+Payment o-- Notification
+FinancialGoal o-- Notification
 
 GoalManager o-- FinancialGoal
 
 ImportManager o-- Transaction
 
-Payment o-- Notification
-FinancialGoal o-- Notification
+
+Student *-- Balance
+Student o-- ConsultationRequest
+Student o-- PaymentManager
+Student o-- GoalManager
+Student o-- NotificationManager
+Student o-- FinanceManager
+Student o-- ImportManager
+
