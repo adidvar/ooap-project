@@ -33,7 +33,6 @@ classDiagram
         - Date dueDate
         - Boolean isPaid
         - String description
-        - RecurrenceType recurrence
         + create()
         + markAsPaid()
         + delete()
