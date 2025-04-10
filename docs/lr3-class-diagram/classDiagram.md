@@ -191,17 +191,9 @@ classDiagram
 
     %% Relationships
     Transaction *-- Category
-    Transaction *-- TransactionType
     Transaction -- Currency
-
     FinancialGoal -- Currency
-
-    Budget *-- BudgetType
     Budget o-- Category
-
-    Notification *-- NotificationType
-
-    ConsultationRequest *-- ConsultationStatus
 
     Student *-- Balance
     Student o-- ConsultationRequest
@@ -241,3 +233,4 @@ classDiagram
     Student -- ImportManager : uses
     Student -- BudgetManager : uses
     Student -- AnalyticsManager : uses
+

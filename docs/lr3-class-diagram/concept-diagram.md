@@ -4,15 +4,23 @@ classDiagram
     class Balance
     class Category
     class Transaction
-    class TransactionType
+    class TransactionType {
+    <<enumeration>>
+    }
     class Payment
     class Budget
-    class BudgetType
+    class BudgetType {
+    <<enumeration>>
+    }
     class FinancialGoal
     class Notification
-    class NotificationType
+    class NotificationType {
+    <<enumeration>>
+    }
     class ConsultationRequest
-    class ConsultationStatus
+    class ConsultationStatus {
+    <<enumeration>>
+    }
     class Currency
 
     %% Зв'язки між сутностями з типами асоціацій
@@ -24,15 +32,15 @@ classDiagram
     Student "1" -- "0..*" Payment : оплачує
 
     Transaction "0..*" -- "1" Category : належить до
-    Transaction "0..*" -- "1" TransactionType : має тип
+    Transaction ..> TransactionType : має тип
     Transaction "0..*" -- "1" Currency : виражена в
 
-    Budget "1" -- "1" BudgetType : має тип
+    Budget ..> BudgetType : має тип
     Budget "1" -- "0..*" Category : включає
 
-    Notification "0..*" -- "1" NotificationType : має тип
+    Notification ..> NotificationType : має тип
 
-    ConsultationRequest "0..*" -- "1" ConsultationStatus : має статус
+    ConsultationRequest ..> ConsultationStatus : має статус
 
     FinancialGoal "0..*" -- "1" Currency : виражена в
 
