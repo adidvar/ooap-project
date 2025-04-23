@@ -7,6 +7,7 @@ classDiagram
         - String email
         - String passwordHash
         + viewDashboard()
+        + addPayment(Payment): void
     }
 
     class Balance {
@@ -37,6 +38,7 @@ classDiagram
         + markAsPaid()
         + delete()
         + setRecurring()
+        + isDueInDays(int days): boolean
     }
 
     class Notification {
@@ -155,6 +157,7 @@ classDiagram
         + sendNotification(Notification)
         + getUserPreferences()
         + setUserPreferences()
+        + sendPaymentReminder(Student): void
     }
 
     class GoalManager {
