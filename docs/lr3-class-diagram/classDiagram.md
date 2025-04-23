@@ -47,11 +47,27 @@ classDiagram
         - Date triggerDate
         - Boolean isDelivered
         - NotificationType type
+        - NotificationStatus status
         + create()
-        + send()
+        + send(): boolean
         + cancel()
+        + schedule(Date triggerDate)
+        + retry()
+        + getStatus(): NotificationStatus
         + snooze(Duration)
     }
+    
+    class NotificationStatus {
+      <<enumeration>>
+      CREATED
+      SCHEDULED
+      SNOOZED
+      DELIVERED
+      FAILED
+      CANCELED
+      RETRY_SCHEDULED
+    }
+
 
     class NotificationType {
         <<enumeration>>
