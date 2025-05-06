@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
-abstract class Notification {
+public abstract class Notification {
     protected String id;
     protected String message;
     protected Date triggerDate;
