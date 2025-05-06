@@ -1,3 +1,9 @@
+package main.com.studentfinance.model;
+
+import javax.management.Notification;
+import java.util.Date;
+import java.util.List;
+
 public class FinancialGoal {
     private String id;
     private String title;

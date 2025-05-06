@@ -1,3 +1,8 @@
+package main.com.studentfinance.model;
+
+import java.util.Date;
+import java.util.List;
+
 public class Payment {
     private Double amount;
     private Date dueDate;

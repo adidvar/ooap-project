@@ -1,3 +1,10 @@
+package main.com.studentfinance.model;
+
+import jdk.jfr.Category;
+
+import java.util.Date;
+import java.util.Map;
+
 public class Budget {
     private String id;
     private Double totalAmount;

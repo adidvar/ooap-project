@@ -1,3 +1,7 @@
+package main.com.studentfinance.model;
+
+import java.util.Date;
+
 public class ConsultationRequest {
     private String id;
     private String question;

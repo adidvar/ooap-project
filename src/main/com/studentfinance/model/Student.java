@@ -1,3 +1,5 @@
+package main.com.studentfinance.model;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
