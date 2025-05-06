@@ -1,3 +1,10 @@
+package main.com.studentfinance.service;
+
+import main.com.studentfinance.model.FinancialGoal;
+
+import java.util.List;
+import java.util.Map;
+
 public class GoalManager {
     private List<FinancialGoal> goals;
     private FinanceManager financeManager;

@@ -1,3 +1,11 @@
+package main.com.studentfinance.service;
+
+import main.com.studentfinance.model.Payment;
+
+import javax.management.Notification;
+import java.util.List;
+import java.util.Map;
+
 public class NotificationManager {
     private List<Notification> notifications;
 
