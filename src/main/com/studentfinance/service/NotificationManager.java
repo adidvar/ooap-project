@@ -9,6 +9,10 @@ import java.util.Map;
 public class NotificationManager {
     private List<Notification> notifications;
 
+    public static NotificationManager getInstance() {
+        return null;
+    }
+
     public void scheduleNotification(Payment payment) {
         // Implementation
     }
