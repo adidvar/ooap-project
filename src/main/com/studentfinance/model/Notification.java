@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.UUID;
 
 public abstract class Notification {
-    protected String id;
-    protected String message;
+    protected final String id;
+    protected final String message;
     protected Date triggerDate;
     protected boolean isDelivered;
     protected NotificationType type;

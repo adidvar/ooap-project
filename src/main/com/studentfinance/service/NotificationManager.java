@@ -88,10 +88,10 @@ public class NotificationManager {
 
         if (!success) {
             // Schedule retry in 1 hour (exception handling as per use case)
-            notification.retry();
             Calendar cal = Calendar.getInstance();
             cal.add(Calendar.HOUR, 1);
             notification.schedule(cal.getTime());
+            notification.retry();
         }
 
         return success;
