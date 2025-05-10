@@ -1,3 +1,11 @@
+package main.com.studentfinance.service;
+
+import main.com.studentfinance.model.Budget;
+import main.com.studentfinance.model.Category;
+
+import java.util.List;
+import java.util.Map;
+
 public class BudgetManager {
     private List<Budget> budgets;
     private FinanceManager financeManager;
