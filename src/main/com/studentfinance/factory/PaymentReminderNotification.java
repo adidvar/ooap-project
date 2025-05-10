@@ -1,4 +1,7 @@
-package main.com.studentfinance.model;
+package main.com.studentfinance.factory;
+
+import main.com.studentfinance.model.Notification;
+import main.com.studentfinance.model.NotificationType;
 
 public class PaymentReminderNotification extends Notification {
     private final NotificationType type;
