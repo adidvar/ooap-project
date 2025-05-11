@@ -9,7 +9,7 @@ import main.com.studentfinance.service.NotificationManager;
 
 import java.util.Calendar;
 
-public class Main {
+public class Main_Lr5 {
     public static void main(String[] args) {
         System.out.println("=== ДЕМОНСТРАЦІЯ ПАТЕРНІВ ПРОЕКТУВАННЯ ===\n");
 
