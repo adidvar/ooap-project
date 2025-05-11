@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.com.studentfinance.service.NotificationManager</OriginalElement>
+  <nodes>
+    <node x="961.3170209571146" y="649.3088732595218">main.com.studentfinance.model.Payment.PaymentBuilder</node>
+    <node x="961.2440221275484" y="207.30963264499465">main.com.studentfinance.model.Payment</node>
+    <node x="153.154014923645" y="959.7403115464786">main.com.studentfinance.service.NotificationManager</node>
+    <node x="351.6926095375054" y="697.6134604871548">main.com.studentfinance.factory.BudgetAlertFactory</node>
+    <node x="132.95384444941428" y="821.2347275292652">main.com.studentfinance.factory.PaymentReminderFactory</node>
+    <node x="665.3467635493599" y="134.27379458270877">main.com.studentfinance.model.Notification</node>
+    <node x="323.7055551168775" y="477.36117033167835">main.com.studentfinance.factory.PaymentReminderNotification</node>
+    <node x="288.0906272983574" y="259.1173956524227">main.com.studentfinance.model.NotificationType</node>
+    <node x="667.6540350194607" y="572.1298311460191">main.com.studentfinance.factory.BudgetAlertNotification</node>
+    <node x="614.793990236006" y="876.2276054068665">main.com.studentfinance.model.Student</node>
+    <node x="562.9129271535153" y="-13.320314113240954">main.com.studentfinance.model.NotificationStatus</node>
+    <node x="-139.89429693189118" y="571.07573323201">main.com.studentfinance.factory.NotificationFactory</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.com.studentfinance.factory.BudgetAlertNotification" target="main.com.studentfinance.model.Notification" relationship="GENERALIZATION">
+      <point x="-116.50003501946071" y="1.6885398082422398E-4" />
+      <point x="636.0" y="603.63" />
+      <point x="636.0" y="306.774" />
+      <point x="-117.49976354935995" y="-14.999794582708773" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Payment.PaymentBuilder" target="main.com.studentfinance.model.Payment" relationship="CREATE">
+      <point x="12.427001170433869" y="-91.5" />
+      <point x="15.0" y="175.49999999999997" />
+    </edge>
+    <edge source="main.com.studentfinance.service.NotificationManager" target="main.com.studentfinance.factory.NotificationFactory" relationship="TO_ONE">
+      <point x="-143.5" y="0.0" />
+      <point x="46.605999999999995" y="1063.2403115464786" />
+      <point x="-14.999703068108829" y="43.5" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Payment.PaymentBuilder" target="main.com.studentfinance.model.Payment" relationship="INNER_CLASS">
+      <point x="-2.5729988295661315" y="-91.5" />
+      <point x="0.0" y="175.49999999999997" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Student" target="main.com.studentfinance.model.Payment" relationship="TO_MANY">
+      <point x="119.0" y="0.0" />
+      <point x="933.1540350194607" y="967.7276054068665" />
+      <point x="933.1540350194607" y="382.8096326449946" />
+      <point x="-137.0" y="0.0" />
+    </edge>
+    <edge source="main.com.studentfinance.service.NotificationManager" target="main.com.studentfinance.factory.BudgetAlertFactory" relationship="CREATE">
+      <point x="143.5" y="-11.512706139612078" />
+      <point x="563.693" y="1051.7276054068666" />
+      <point x="15.000390462494579" y="31.5" />
+    </edge>
+    <edge source="main.com.studentfinance.factory.BudgetAlertFactory" target="main.com.studentfinance.factory.BudgetAlertNotification" relationship="CREATE">
+      <point x="189.49999999999997" y="-31.5" />
+      <point x="-45.9614254819553" y="31.5" />
+    </edge>
+    <edge source="main.com.studentfinance.factory.BudgetAlertFactory" target="main.com.studentfinance.factory.NotificationFactory" relationship="GENERALIZATION">
+      <point x="3.904624945789692E-4" y="31.499539512845217" />
+      <point x="548.693" y="791.0" />
+      <point x="61.605999999999995" y="791.0" />
+      <point x="2.9693189117097063E-4" y="43.50026676799007" />
+    </edge>
+    <edge source="main.com.studentfinance.factory.PaymentReminderNotification" target="main.com.studentfinance.model.NotificationType" relationship="TO_ONE">
+      <point x="4.44883122469264E-4" y="-31.500170331678362" />
+      <point x="464.206" y="363.61699999999996" />
+      <point x="592.0" y="363.61699999999996" />
+      <point x="592.0" y="302.617" />
+      <point x="125.0003727016426" y="-3.9565242271066836E-4" />
+    </edge>
+    <edge source="main.com.studentfinance.factory.PaymentReminderNotification" target="main.com.studentfinance.model.Notification" relationship="GENERALIZATION">
+      <point x="140.50044488312244" y="-1.7033167836189023E-4" />
+      <point x="636.0" y="508.861" />
+      <point x="636.0" y="306.774" />
+      <point x="-117.49976354935995" y="-14.999794582708773" />
+    </edge>
+    <edge source="main.com.studentfinance.factory.PaymentReminderFactory" target="main.com.studentfinance.factory.PaymentReminderNotification" relationship="CREATE">
+      <point x="-23.748289332536743" y="-31.5" />
+      <point x="306.2055551168775" y="508.86117033167835" />
+      <point x="-140.5" y="0.0" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Payment" target="main.com.studentfinance.model.Notification" relationship="TO_MANY">
+      <point x="-137.0" y="-61.035838062285876" />
+      <point x="117.5" y="0.0" />
+    </edge>
+    <edge source="main.com.studentfinance.factory.PaymentReminderFactory" target="main.com.studentfinance.factory.NotificationFactory" relationship="GENERALIZATION">
+      <point x="1.5555058572402913E-4" y="-31.499727529265215" />
+      <point x="329.954" y="791.0" />
+      <point x="61.605999999999995" y="791.0" />
+      <point x="2.9693189117097063E-4" y="43.50026676799007" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Notification" target="main.com.studentfinance.model.NotificationType" relationship="TO_ONE">
+      <point x="-117.49976354935995" y="2.0541729122669494E-4" />
+      <point x="592.0" y="321.774" />
+      <point x="592.0" y="302.617" />
+      <point x="125.0003727016426" y="-3.9565242271066836E-4" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Notification" target="main.com.studentfinance.model.NotificationStatus" relationship="TO_ONE">
+      <point x="-90.43383639584465" y="-187.5" />
+      <point x="0.0" y="43.5" />
+    </edge>
+    <edge source="main.com.studentfinance.service.NotificationManager" target="main.com.studentfinance.factory.PaymentReminderFactory" relationship="CREATE">
+      <point x="33.29982952576927" y="-103.5" />
+      <point x="0.0" y="31.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.7568692756036636" showDependencies="true" x="560.5000000000002" y="586.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
