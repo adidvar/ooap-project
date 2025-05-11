@@ -4,6 +4,7 @@ import main.com.studentfinance.model.Notification;
 import main.com.studentfinance.model.NotificationType;
 
 public class BudgetAlertNotification extends Notification {
+
     public BudgetAlertNotification(String message) {
         super(message);
         this.type = NotificationType.BUDGET_ALERT;
