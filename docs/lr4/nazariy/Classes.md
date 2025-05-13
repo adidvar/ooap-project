@@ -97,12 +97,12 @@ classDiagram
     }
 
     class NotificationManager { // Патерн Singleton
-        - {static} NotificationManager instance
+        - NotificationManager instance
         - NotificationFactory notificationFactory
         - Integer defaultMaxRetryAttempts
         - Map~String, Notification~ scheduledNotifications
         - NotificationManager() // Приватний конструктор
-        + {static} getInstance(): NotificationManager
+        + getInstance(): NotificationManager
         + schedulePaymentReminder(Payment payment): String
         + scheduleNotification(Notification notification)
         + checkDueNotifications()
