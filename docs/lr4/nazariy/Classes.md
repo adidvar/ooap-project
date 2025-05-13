@@ -7,10 +7,9 @@ classDiagram
         - String email
         - String passwordHash
         + viewDashboard()
-        + getNotificationPreferences()
-        + setNotificationPreferences()
+        + getNotificationPreferences(): NotificationPreferences
+        + setNotificationPreferences(NotificationPreferences prefs)
     }
-
     class Payment {
         - String id
         - Double amount
@@ -28,29 +27,65 @@ classDiagram
         - String id
         - String message
         - Date triggerDate
-        - Boolean isDelivered
         - NotificationType type
+        - NotificationState state  // Додано стан
         - Integer retryCount
-        + create()
+        - Integer maxRetries
+        + Notification(NotificationBuilder builder) // Конструктор приймає Builder
         + send(): DeliveryStatus
-        + cancel(): Boolean
+        + cancel()
         + snooze(Duration duration)
         + isReadyToSend(Date currentDate): Boolean
         + incrementRetryCount()
         + hasReachedMaxRetries(): Boolean
+        + setState(NotificationState state) // Метод для зміни стану
+        + getId(): String
+        + getTriggerDate(): Date
+        + getType(): NotificationType
+        + getState(): NotificationState
+    }
+
+    Notification --|> NotificationBuilder : uses
+
+    class NotificationBuilder { // Патерн Builder
+        - String id
+        - String message
+        - Date triggerDate
+        - NotificationType type
+        - NotificationState initialState
+        - Integer maxRetries
+        + NotificationBuilder(String id, NotificationType type)
+        + setMessage(String message): NotificationBuilder
+        + setTriggerDate(Date triggerDate): NotificationBuilder
+        + setInitialState(NotificationState state): NotificationBuilder
+        + setMaxRetries(int retries): NotificationBuilder
+        + build(): Notification
     }
 
     class NotificationType {
         <<enumeration>>
         PAYMENT_REMINDER
         BUDGET_ALERT
+        GENERAL_MESSAGE
+    }
+
+    class NotificationState { // Енам для стану сповіщення
+        <<enumeration>>
+        SCHEDULED
+        PENDING
+        DELIVERING
+        DELIVERED
+        FAILED
+        CANCELLED
+        SNOOZED
+        PERMANENTLY_FAILED
     }
 
     class DeliveryStatus {
         <<enumeration>>
         SUCCESS
         FAILED
-        PENDING
+        PENDING_EXTERNAL // Якщо відправка асинхронна
     }
 
     class PaymentController {
@@ -61,21 +96,35 @@ classDiagram
         + getDuePayments(Date date): List~Payment~
     }
 
-    class NotificationManager {
-        - maxRetryAttempts: Integer
-        + schedulePaymentReminder(Payment): String
-        + checkDueDates()
-        + sendNotification(Notification): DeliveryStatus
-        + cancelNotification(String id): Boolean
-        + getUserPreferences(Student): NotificationPreferences
-        + getDueNotifications(): List~Notification~
-        - shouldRetry(Notification): Boolean
-        - createNotificationMessage(Payment): String
+    class NotificationManager { // Патерн Singleton
+        - {static} NotificationManager instance
+        - NotificationFactory notificationFactory
+        - Integer defaultMaxRetryAttempts
+        - Map~String, Notification~ scheduledNotifications
+        - NotificationManager() // Приватний конструктор
+        + {static} getInstance(): NotificationManager
+        + schedulePaymentReminder(Payment payment): String
+        + scheduleNotification(Notification notification)
+        + checkDueNotifications()
+        + sendNotificationInternal(Notification notification): DeliveryStatus
+        + cancelNotification(String notificationId): Boolean
+        + snoozeNotification(String notificationId, Duration duration): Boolean
+        + getNotificationById(String id): Notification
+        + getUserPreferences(Student student): NotificationPreferences
+        - createNotificationMessage(Payment payment): String
+        - handleFailedDelivery(Notification notification)
     }
+
+    class NotificationFactory { // Патерн Factory Method (або Abstract Factory)
+        + createNotification(NotificationType type, String id, String message, Date triggerDate): Notification
+        + createPaymentReminderNotification(String id, Payment payment, NotificationPreferences prefs): Notification
+        + createBudgetAlertNotification(String id, String message, Date triggerDate): Notification
+    }
+
 
     class NotificationPreferences {
         - Boolean enablePaymentReminders
-        - Integer daysBeforeDue
+        - Integer daysBeforeDue // Скільки днів до дати платежу надсилати нагадування
         - Boolean enableBudgetAlerts
         - TimeOfDay preferredNotificationTime
         + setEnablePaymentReminders(Boolean)
@@ -87,10 +136,18 @@ classDiagram
     %% Relationships
     Student "1" -- "many" Payment : manages
     Student "1" -- "1" NotificationPreferences : configures
+
     Payment "1" -- "*" Notification : triggers
+
+    NotificationManager "1" -- "1" NotificationFactory : uses >
+    NotificationManager "1" -- "*" Notification : manages >
     NotificationManager -- NotificationType : uses
-    NotificationManager -- DeliveryStatus : returns
-    NotificationManager -- Notification : manages
-    PaymentController -- Payment : manages
-    PaymentController -- NotificationManager : uses
+    NotificationManager -- DeliveryStatus : handles
+
+    PaymentController "1" -- "1" NotificationManager : uses (getInstance) >
+    PaymentController "1" -- "*" Payment : manages
+
+    Notification "1" -- "1" NotificationState : has a
+    Notification "1" -- "1" NotificationType : has a
+    NotificationBuilder ..> Notification : builds
 ```
