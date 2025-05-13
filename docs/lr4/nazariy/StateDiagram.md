@@ -1,26 +1,24 @@
 ```mermaid
 stateDiagram-v2
-    [*] --> Created: create()
-    Created --> Scheduled: schedule()
-    Scheduled --> Pending: triggerDate reached
-    Pending --> Delivering: send()
-    Delivering --> Delivered: successful delivery
-    Delivering --> Failed: delivery failure
-    Failed --> Pending: retry()
-    
-    Scheduled --> Cancelled: cancel()
-    Pending --> Cancelled: cancel()
-    
-    Delivered --> [*]
-    Cancelled --> [*]
-    
-    Delivered --> Snoozed: snooze(Duration)
-    Snoozed --> Pending: snooze period ended
-    
-    state Failed {
-        [*] --> FirstAttempt
-        FirstAttempt --> SecondAttempt: retry
-        SecondAttempt --> FinalAttempt: retry
-        FinalAttempt --> [*]: max retries reached
-    }
+    [*] --> SCHEDULED: Create (Builder.build())
+
+    SCHEDULED --> PENDING: Scheduled time for check arrives / Manager picks up
+
+    PENDING --> DELIVERING: NotificationManager attempts send()
+    PENDING --> CANCELLED: cancel()
+    PENDING --> SNOOZED: snooze(Duration)
+
+    DELIVERING --> DELIVERED: send() successful (DeliveryStatus.SUCCESS)
+    DELIVERING --> FAILED: send() failed (DeliveryStatus.FAILED)
+
+    FAILED --> PENDING: retry() [if !hasReachedMaxRetries()]
+    FAILED --> PERMANENTLY_FAILED: max retries reached
+    FAILED --> CANCELLED: cancel()
+
+    SNOOZED --> PENDING: Snooze period ended / Manager picks up
+    SNOOZED --> CANCELLED: cancel()
+
+    DELIVERED --> [*]
+    CANCELLED --> [*]
+    PERMANENTLY_FAILED --> [*]
 ```
