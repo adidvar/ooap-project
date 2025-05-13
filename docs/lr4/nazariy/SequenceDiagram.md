@@ -76,17 +76,20 @@ sequenceDiagram
                 activate N
                 note right of N: State: FAILED
                 deactivate N
-                NM->>NM: handleFailedDelivery(N) // (handles retries or permanent failure)
-                opt if retry is possible
-                     NM->>N: setState(NotificationState.PENDING) // After incrementing retry count
+                NM->>NM: handleFailedDelivery(N) // Концептуально: збільшує лічильник спроб в N
+
+                alt Retry is possible (e.g., N.hasReachedMaxRetries() is false)
+                     NM->>N: setState(NotificationState.PENDING)
                      activate N
                      note right of N: State: PENDING (for retry)
                      deactivate N
-                else max retries reached
+                     NM->>NM: scheduleRetryFor(N) // Планує повторну спробу
+                else Max retries reached (e.g., N.hasReachedMaxRetries() is true)
                      NM->>N: setState(NotificationState.PERMANENTLY_FAILED)
                      activate N
                      note right of N: State: PERMANENTLY_FAILED
                      deactivate N
+                     NM->>NM: logPermanentFailure(N) // Логує остаточну помилку
                 end
             end
         end
