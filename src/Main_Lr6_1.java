@@ -6,7 +6,7 @@ import main.com.studentfinance.service.NotificationManager;
 
 import java.util.Calendar;
 
-public class Main_Lr6 {
+public class Main_Lr6_1 {
     public static void main(String[] args) {
         // Створюємо студента
         Student student = new Student("S001", "Іван Петренко", "ivan@example.com", "+380501234567");
