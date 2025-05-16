@@ -22,8 +22,8 @@ class CompositeNotification {
   - List~NotificationComponent~ childNotifications
   - Date triggerDate
 }
-class EnhancedNotificationFactory {
-  + EnhancedNotificationFactory() 
+class NotificationFactory {
+  + NotificationFactory() 
 }
 class LoggingDecorator {
   + LoggingDecorator(NotificationComponent) 
@@ -112,13 +112,13 @@ BasicNotification "1" *--> "status 1" NotificationStatus
 BasicNotification "1" *--> "type 1" NotificationType 
 BudgetAlertDecorator  -->  NotificationDecorator 
 CompositeNotification  ..>  NotificationComponent 
-CompositeNotification "1" *--> "childNotifications *" NotificationComponent 
-EnhancedNotificationFactory  ..>  BasicNotification : «create»
-EnhancedNotificationFactory  ..>  BudgetAlertDecorator : «create»
-EnhancedNotificationFactory  ..>  CompositeNotification : «create»
-EnhancedNotificationFactory  ..>  LoggingDecorator : «create»
-EnhancedNotificationFactory  ..>  PaymentReminderDecorator : «create»
-EnhancedNotificationFactory  ..>  RetryDecorator : «create»
+CompositeNotification "1" *--> "childNotifications *" NotificationComponent
+NotificationFactory  ..>  BasicNotification : «create»
+NotificationFactory  ..>  BudgetAlertDecorator : «create»
+NotificationFactory  ..>  CompositeNotification : «create»
+NotificationFactory  ..>  LoggingDecorator : «create»
+NotificationFactory  ..>  PaymentReminderDecorator : «create»
+NotificationFactory  ..>  RetryDecorator : «create»
 LoggingDecorator  -->  NotificationDecorator 
 NotificationDecorator  ..>  NotificationComponent 
 NotificationDecorator "1" *--> "wrappedNotification 1" NotificationComponent 
