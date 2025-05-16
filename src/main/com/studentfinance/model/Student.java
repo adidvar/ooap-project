@@ -1,5 +1,7 @@
 package main.com.studentfinance.model;
 
+import main.com.studentfinance.service.BridgedNotificationManager;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +20,20 @@ public class Student {
         this.payments = new ArrayList<>();
     }
 
+    public Student(String id, String name, String email) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.passwordHash = "passwordHash";
+        this.payments = new ArrayList<>();
+    }
+
     public void addPayment(Payment payment) {
+        this.payments.add(payment);
+        BridgedNotificationManager.getInstance().schedulePaymentReminders(payment, this);
+    }
+
+    public void addPaymentPrimary(Payment payment) {
         payments.add(payment);
         payment.create();
     }

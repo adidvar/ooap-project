@@ -1,5 +1,6 @@
 package main.com.studentfinance.model;
 
+import main.com.studentfinance.implementator.NotificationAbstraction;
 import main.com.studentfinance.service.NotificationManager;
 
 import java.util.*;
@@ -13,6 +14,7 @@ public class Payment {
     private boolean isRecurring;
     private List<Notification> notifications;
     private List<NotificationComponent> compNotifications;
+    private List<NotificationAbstraction> absNotifications;
 
     // Private constructor to enforce the use of builder
     private Payment(PaymentBuilder builder) {
@@ -24,6 +26,19 @@ public class Payment {
         this.isRecurring = builder.isRecurring;
         this.notifications = new ArrayList<>();
         this.compNotifications = new ArrayList<>();
+        this.absNotifications = new ArrayList<>();
+    }
+
+    public Payment(String description, double amount, Date dueDate) {
+        this.id = UUID.randomUUID().toString();
+        this.description = description;
+        this.amount = amount;
+        this.dueDate = dueDate;
+        this.isPaid = false;
+        this.isRecurring = false;
+        this.notifications = new ArrayList<>();
+        this.compNotifications = new ArrayList<>();
+        this.absNotifications = new ArrayList<>();
     }
 
     public void create() {
@@ -57,6 +72,10 @@ public class Payment {
         Date futureDate = cal.getTime();
 
         return !dueDate.after(futureDate) && !isPaid;
+    }
+
+    public void addNotification(NotificationAbstraction notification) {
+        this.absNotifications.add(notification);
     }
 
     public void addNotification(NotificationComponent notification) {
