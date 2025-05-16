@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
-    private String id;
-    private String name;
-    private String email;
-    private String passwordHash;
-    private List<Payment> payments;
+    private final String id;
+    private final String name;
+    private final String email;
+    private final String passwordHash;
+    private final List<Payment> payments;
 
     public Student(String id, String name, String email, String passwordHash) {
         this.id = id;
