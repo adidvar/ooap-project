@@ -1,12 +1,10 @@
 package main.com.studentfinance.service;
 
 import main.com.studentfinance.factory.BudgetAlertFactory;
+import main.com.studentfinance.factory.EnhancedNotificationFactory;
 import main.com.studentfinance.factory.NotificationFactory;
 import main.com.studentfinance.factory.PaymentReminderFactory;
-import main.com.studentfinance.model.Notification;
-import main.com.studentfinance.model.NotificationType;
-import main.com.studentfinance.model.Payment;
-import main.com.studentfinance.model.Student;
+import main.com.studentfinance.model.*;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -74,9 +72,48 @@ public class NotificationManager {
         }
     }
 
+    public void schedulePaymentReminders(Payment payment) {
+        // Створюємо групу для нагадувань про цей платіж
+        CompositeNotification paymentNotifications =
+                EnhancedNotificationFactory.createGroupedNotifications(
+                        "Нагадування для " + payment.getDescription());
+
+        // Додаємо нагадування за 3 дні до дати оплати
+        NotificationComponent reminder3DaysBefore =
+                EnhancedNotificationFactory.createComprehensivePaymentReminder(
+                        "Через 3 дні настане термін оплати", payment, 3);
+
+        // Додаємо нагадування в день оплати
+        NotificationComponent reminderOnDueDate =
+                EnhancedNotificationFactory.createComprehensivePaymentReminder(
+                        "Сьогодні останній день для оплати", payment, 0);
+
+        // Додаємо нагадування до групи
+        paymentNotifications.addNotification(reminder3DaysBefore);
+        paymentNotifications.addNotification(reminderOnDueDate);
+
+        // Встановлюємо дату першого нагадування (в реальній системі це було б додано до планувальника)
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(payment.getDueDate());
+        calendar.add(Calendar.DATE, -3);
+        Date firstReminderDate = calendar.getTime();
+
+        paymentNotifications.setTriggerDate(firstReminderDate);
+
+        // Зберігаємо зв'язок між платежем та нагадуваннями
+        payment.addNotification(reminder3DaysBefore);
+        payment.addNotification(reminderOnDueDate);
+
+        System.out.println("Заплановано нагадування для платежу: " + payment.getDescription());
+    }
+
     public void checkDueDates() {
         System.out.println("Checking due dates for scheduled notifications...");
         // Implementation would include checking database for notifications with trigger dates
+    }
+
+    public boolean sendNotification(NotificationComponent notification) {
+        return notification.send();
     }
 
     public boolean sendNotification(Notification notification) {

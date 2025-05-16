@@ -18,13 +18,23 @@ public class Student {
         this.payments = new ArrayList<>();
     }
 
-    public void viewDashboard() {
-        System.out.println("Student " + name + " viewing dashboard");
-    }
-
     public void addPayment(Payment payment) {
         payments.add(payment);
-        payment.create(); // This will trigger notification creation via NotificationManager
+        payment.create();
+    }
+
+    public void viewDashboard() {
+        System.out.println("Dashboard для студента: " + name);
+        System.out.println("Email: " + email);
+        System.out.println("Кількість платежів: " + payments.size());
+
+        // Виводимо інформацію про платежі
+        for (Payment payment : payments) {
+            System.out.println(" - " + payment.getDescription() +
+                    ": " + payment.getAmount() +
+                    " до " + payment.getDueDate() +
+                    (payment.isPaid() ? " (оплачено)" : " (не оплачено)"));
+        }
     }
 
     // Getters

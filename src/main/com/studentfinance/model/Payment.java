@@ -12,6 +12,7 @@ public class Payment {
     private final String description;
     private boolean isRecurring;
     private List<Notification> notifications;
+    private List<NotificationComponent> compNotifications;
 
     // Private constructor to enforce the use of builder
     private Payment(PaymentBuilder builder) {
@@ -22,6 +23,7 @@ public class Payment {
         this.description = builder.description;
         this.isRecurring = builder.isRecurring;
         this.notifications = new ArrayList<>();
+        this.compNotifications = new ArrayList<>();
     }
 
     public void create() {
@@ -55,6 +57,10 @@ public class Payment {
         Date futureDate = cal.getTime();
 
         return !dueDate.after(futureDate) && !isPaid;
+    }
+
+    public void addNotification(NotificationComponent notification) {
+        this.compNotifications.add(notification);
     }
 
     public void addNotification(Notification notification) {

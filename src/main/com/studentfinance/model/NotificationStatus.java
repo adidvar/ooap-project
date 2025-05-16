@@ -9,5 +9,8 @@ public enum NotificationStatus {
     FAILED,
     RETRY_SCHEDULED,
     CANCELED,
-    ARCHIVED
+    ARCHIVED,
+    PENDING,
+    DELIVERED,
+    CANCELLED
 }
