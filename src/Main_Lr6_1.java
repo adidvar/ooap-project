@@ -1,6 +1,6 @@
 import main.com.studentfinance.decorator.LoggingDecorator;
 import main.com.studentfinance.decorator.RetryDecorator;
-import main.com.studentfinance.factory.EnhancedNotificationFactory;
+import main.com.studentfinance.factory.NotificationFactory;
 import main.com.studentfinance.model.*;
 import main.com.studentfinance.service.NotificationManager;
 
@@ -13,7 +13,7 @@ public class Main_Lr6_1 {
 
         // Створюємо платіж через Builder Pattern
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.DATE, 7); // Через 7 днів
+        calendar.add(Calendar.DATE, 7);
 
         Payment payment1 = new Payment.PaymentBuilder()
                 .description("Оплата за навчання")
@@ -25,7 +25,7 @@ public class Main_Lr6_1 {
         student.addPayment(payment1);
 
         // Додаємо другий платіж з іншою датою
-        calendar.add(Calendar.DATE, 14); // Ще через 14 днів (тобто через 21 день від сьогодні)
+        calendar.add(Calendar.DATE, 14);
         Payment payment2 = new Payment.PaymentBuilder()
                 .description("Оплата за гуртожиток")
                 .amount(1500.0)
@@ -42,7 +42,7 @@ public class Main_Lr6_1 {
 
         // Створюємо базове сповіщення
         NotificationComponent basicNotification =
-                EnhancedNotificationFactory.createBasicNotification(
+                NotificationFactory.createBasicNotification(
                         "Звичайне сповіщення", NotificationType.INFO);
 
         // Додаємо логування
@@ -61,15 +61,15 @@ public class Main_Lr6_1 {
 
         // Створюємо групу сповіщень для студента
         CompositeNotification studentNotifications =
-                EnhancedNotificationFactory.createGroupedNotifications("Сповіщення для " + student.getName());
+                NotificationFactory.createGroupedNotifications("Сповіщення для " + student.getName());
 
         // Додаємо різні типи сповіщень до групи
         NotificationComponent paymentConfirmation =
-                EnhancedNotificationFactory.createLoggedNotification(
+                NotificationFactory.createLoggedNotification(
                         "Підтвердження оплати отримано", NotificationType.PAYMENT);
 
         NotificationComponent budgetAlert =
-                EnhancedNotificationFactory.createBudgetAlert(
+                NotificationFactory.createBudgetAlert(
                         "Вашу квоту бюджету перевищено", "Місячний бюджет", 2000.0, 2500.0);
 
         // Додаємо сповіщення до групи
@@ -86,7 +86,7 @@ public class Main_Lr6_1 {
         // Демонстрація сповіщення про платіж в день оплати
         System.out.println("\nСимуляція дня оплати для першого платежу:");
         NotificationComponent dueDateReminder =
-                EnhancedNotificationFactory.createPaymentReminder(
+                NotificationFactory.createPaymentReminder(
                         "Сьогодні останній день для оплати", payment1, 0);
 
         NotificationManager.getInstance().sendNotification(dueDateReminder);

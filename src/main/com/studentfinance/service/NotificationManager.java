@@ -1,7 +1,6 @@
 package main.com.studentfinance.service;
 
 import main.com.studentfinance.factory.BudgetAlertFactory;
-import main.com.studentfinance.factory.EnhancedNotificationFactory;
 import main.com.studentfinance.factory.NotificationFactory;
 import main.com.studentfinance.factory.PaymentReminderFactory;
 import main.com.studentfinance.model.*;
@@ -75,17 +74,17 @@ public class NotificationManager {
     public void schedulePaymentReminders(Payment payment) {
         // Створюємо групу для нагадувань про цей платіж
         CompositeNotification paymentNotifications =
-                EnhancedNotificationFactory.createGroupedNotifications(
+                NotificationFactory.createGroupedNotifications(
                         "Нагадування для " + payment.getDescription());
 
         // Додаємо нагадування за 3 дні до дати оплати
         NotificationComponent reminder3DaysBefore =
-                EnhancedNotificationFactory.createComprehensivePaymentReminder(
+                NotificationFactory.createComprehensivePaymentReminder(
                         "Через 3 дні настане термін оплати", payment, 3);
 
         // Додаємо нагадування в день оплати
         NotificationComponent reminderOnDueDate =
-                EnhancedNotificationFactory.createComprehensivePaymentReminder(
+                NotificationFactory.createComprehensivePaymentReminder(
                         "Сьогодні останній день для оплати", payment, 0);
 
         // Додаємо нагадування до групи
