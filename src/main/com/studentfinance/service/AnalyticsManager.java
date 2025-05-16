@@ -1,3 +1,10 @@
+package main.com.studentfinance.service;
+
+import main.com.studentfinance.model.Category;
+
+import java.util.List;
+import java.util.Map;
+
 public class AnalyticsManager {
     private FinanceManager financeManager;
     private BudgetManager budgetManager;
