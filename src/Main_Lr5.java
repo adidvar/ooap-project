@@ -143,7 +143,7 @@ public class Main_Lr5 {
                 .build();
 
         // Додання платежу до студента (викликає NotificationManager.getInstance())
-        student.addPayment(payment);
+        student.addPaymentPrimary(payment);
 
         System.out.println("- Створені сповіщення для платежу: " + payment.getNotifications().size());
 

@@ -22,7 +22,7 @@ public class Main_Lr6_1 {
                 .build();
 
         // Додаємо платіж студенту, що автоматично створює нагадування
-        student.addPayment(payment1);
+        student.addPaymentPrimary(payment1);
 
         // Додаємо другий платіж з іншою датою
         calendar.add(Calendar.DATE, 14);
@@ -32,7 +32,7 @@ public class Main_Lr6_1 {
                 .dueDate(calendar.getTime())
                 .build();
 
-        student.addPayment(payment2);
+        student.addPaymentPrimary(payment2);
 
         // Показуємо інформацію на дашборді
         student.viewDashboard();
