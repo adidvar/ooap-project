@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.com.studentfinance.lr.UrgentPaymentReminderNotification</OriginalElement>
+  <nodes>
+    <node x="-32.54234499481595" y="115.96861829120007">main.com.studentfinance.lr.PaymentReminderNotification</node>
+    <node x="165.45765500518405" y="283.9686182912001">main.com.studentfinance.lr.UrgentPaymentReminderNotification</node>
+    <node x="-758.6160716984318" y="870.7300360560641">main.com.studentfinance.lr.NotificationManager</node>
+    <node x="395.31723962777596" y="67.96861829120007">main.com.studentfinance.lr.NotificationTemplate</node>
+    <node x="-731.6160716984318" y="610.7499517624321">main.com.studentfinance.lr.NotificationHistory</node>
+    <node x="-205.54234499481595" y="550.9686182912001">main.com.studentfinance.model.Notification</node>
+    <node x="-392.54234499481595" y="247.46861829120007">main.com.studentfinance.lr.NotificationMemento</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.com.studentfinance.lr.UrgentPaymentReminderNotification" target="main.com.studentfinance.lr.NotificationTemplate" relationship="GENERALIZATION">
+      <point x="0.0" y="-68.0" />
+      <point x="370.45765500518405" y="277.4596658708481" />
+      <point x="512.317239627776" y="277.4596658708481" />
+      <point x="0.0" y="80.0" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Notification" target="main.com.studentfinance.lr.NotificationMemento" relationship="CREATE">
+      <point x="0.0" y="-321.0" />
+      <point x="10.457655005184051" y="491.9686182912001" />
+      <point x="-148.04234499481595" y="491.9686182912001" />
+      <point x="81.5" y="104.5" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Notification" target="main.com.studentfinance.lr.PaymentReminderNotification" relationship="CREATE">
+      <point x="0.0" y="-321.0" />
+      <point x="10.457655005184051" y="491.9686182912001" />
+      <point x="150.45765500518405" y="491.9686182912001" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.NotificationManager" target="main.com.studentfinance.lr.NotificationHistory" relationship="CREATE">
+      <point x="94.25" y="-105.0" />
+      <point x="-475.8660716984318" y="860.2405931008" />
+      <point x="-436.3351927060478" y="860.2405931008" />
+      <point x="-436.3351927060478" y="722.7499517624321" />
+      <point x="0.0" y="56.0" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.PaymentReminderNotification" target="main.com.studentfinance.lr.NotificationTemplate" relationship="GENERALIZATION">
+      <point x="0.0" y="-56.0" />
+      <point x="150.45765500518405" y="259.4596658708481" />
+      <point x="512.317239627776" y="259.4596658708481" />
+      <point x="0.0" y="80.0" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.NotificationManager" target="main.com.studentfinance.model.Notification" relationship="CREATE">
+      <point x="94.25" y="-105.0" />
+      <point x="-475.8660716984318" y="796.7399939092481" />
+      <point x="-259.8292083466238" y="796.7399939092481" />
+      <point x="-259.8292083466238" y="511.9686182912001" />
+      <point x="10.457655005184051" y="511.9686182912001" />
+      <point x="0.0" y="-321.0" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.NotificationHistory" target="main.com.studentfinance.lr.NotificationMemento" relationship="TO_MANY">
+      <point x="0.0" y="-56.0" />
+      <point x="-570.1160716984318" y="564.7499517624321" />
+      <point x="-311.04234499481595" y="564.7499517624321" />
+      <point x="-81.5" y="104.5" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.NotificationManager" target="main.com.studentfinance.lr.NotificationHistory" relationship="TO_ONE">
+      <point x="-94.25" y="-105.0" />
+      <point x="-664.3660716984318" y="762.7499517624321" />
+      <point x="-381.5797110630398" y="762.7499517624321" />
+      <point x="-381.5797110630398" y="574.7499517624321" />
+      <point x="-570.1160716984318" y="574.7499517624321" />
+      <point x="0.0" y="-56.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6577136826380499" showDependencies="true" x="309.5" y="677.0301731553279" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

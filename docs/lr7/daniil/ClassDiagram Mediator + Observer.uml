@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>main.com.studentfinance.lr.PaymentNotificationObserver</OriginalElement>
+  <nodes>
+    <node x="56.5" y="1352.0">main.com.studentfinance.model.Payment.PaymentBuilder</node>
+    <node x="-38.5" y="4.5">main.com.studentfinance.lr.PaymentObserver</node>
+    <node x="-392.5" y="100.5">main.com.studentfinance.lr.NotificationMediator</node>
+    <node x="-491.0" y="852.0">main.com.studentfinance.lr.PaymentNotificationObserver</node>
+    <node x="-192.5" y="291.0">main.com.studentfinance.lr.NotificationManager</node>
+    <node x="52.0" y="539.0">main.com.studentfinance.model.Payment</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="main.com.studentfinance.lr.PaymentNotificationObserver" target="main.com.studentfinance.lr.NotificationMediator" relationship="TO_ONE">
+      <point x="-93.5" y="-44.0" />
+      <point x="-397.5" y="816.0" />
+      <point x="-298.25" y="816.0" />
+      <point x="-94.25" y="55.5" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Payment.PaymentBuilder" target="main.com.studentfinance.model.Payment" relationship="CREATE">
+      <point x="69.75" y="-104.0" />
+      <point x="265.75" y="1316.0" />
+      <point x="298.0" y="1316.0" />
+      <point x="82.0" y="357.0" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Payment.PaymentBuilder" target="main.com.studentfinance.model.Payment" relationship="INNER_CLASS">
+      <point x="-69.75" y="-104.0" />
+      <point x="126.25" y="1316.0" />
+      <point x="134.0" y="1316.0" />
+      <point x="-82.0" y="357.0" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.PaymentNotificationObserver" target="main.com.studentfinance.lr.PaymentObserver" relationship="REALIZATION">
+      <point x="93.5" y="-44.0" />
+      <point x="-210.5" y="276.0" />
+      <point x="8.75" y="276.0" />
+      <point x="-47.25" y="31.5" />
+    </edge>
+    <edge source="main.com.studentfinance.model.Payment" target="main.com.studentfinance.lr.PaymentObserver" relationship="TO_MANY">
+      <point x="0.0" y="-357.0" />
+      <point x="216.0" y="256.0" />
+      <point x="96.0" y="256.0" />
+      <point x="96.0" y="96.0" />
+      <point x="103.25" y="96.0" />
+      <point x="47.25" y="31.5" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.NotificationManager" target="main.com.studentfinance.lr.NotificationMediator" relationship="REALIZATION">
+      <point x="-94.25" y="-105.0" />
+      <point x="-98.25" y="256.0" />
+      <point x="-109.75" y="256.0" />
+      <point x="94.25" y="55.5" />
+    </edge>
+    <edge source="main.com.studentfinance.lr.NotificationManager" target="main.com.studentfinance.lr.PaymentObserver" relationship="TO_MANY">
+      <point x="94.25" y="-105.0" />
+      <point x="90.25" y="256.0" />
+      <point x="96.0" y="256.0" />
+      <point x="96.0" y="96.0" />
+      <point x="103.25" y="96.0" />
+      <point x="47.25" y="31.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Compact" zoom="0.6400000000000001" showDependencies="true" x="319.4999999999999" y="507.9062499999999" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -30,7 +30,7 @@ public class Student {
 
     public void addPayment(Payment payment) {
         this.payments.add(payment);
-        BridgedNotificationManager.getInstance().schedulePaymentReminders(payment, this);
+//        BridgedNotificationManager.getInstance().schedulePaymentReminders(payment, this);
     }
 
     public void addPaymentPrimary(Payment payment) {

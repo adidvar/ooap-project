@@ -1,6 +1,7 @@
 package main.com.studentfinance.model;
 
 import main.com.studentfinance.implementator.NotificationAbstraction;
+import main.com.studentfinance.lr.PaymentObserver;
 import main.com.studentfinance.service.NotificationManager;
 
 import java.util.*;
@@ -15,6 +16,7 @@ public class Payment {
     private List<Notification> notifications;
     private List<NotificationComponent> compNotifications;
     private List<NotificationAbstraction> absNotifications;
+    private final List<PaymentObserver> observers = new ArrayList<>();
 
     // Private constructor to enforce the use of builder
     private Payment(PaymentBuilder builder) {
@@ -41,17 +43,60 @@ public class Payment {
         this.absNotifications = new ArrayList<>();
     }
 
+    public Payment(String id, double amount, Date dueDate, String description) {
+        System.out.println("OBSERVER: Created observable Payment object with ID: " + id);
+        this.id = id;
+        this.amount = amount;
+        this.dueDate = dueDate;
+        this.description = description;
+        this.isPaid = false;
+        this.isRecurring = false;
+
+        this.notifications = new ArrayList<>();
+        this.compNotifications = new ArrayList<>();
+        this.absNotifications = new ArrayList<>();
+    }
+
+//    public void create() {
+//        System.out.println("Payment created: " + this.description + " for " + this.amount);
+//        NotificationManager.getInstance().scheduleNotification(this);
+//        notifyObservers();
+//    }
+//
+//    public void markAsPaid() {
+//        this.isPaid = true;
+//        System.out.println("Payment marked as paid: " + this.description);
+//        notifyObservers();
+//    }
+
     public void create() {
-        System.out.println("Payment created: " + this.description + " for " + this.amount);
-        // Automatically schedule notifications via NotificationManager
-        assert NotificationManager.getInstance() != null;
-        NotificationManager.getInstance().scheduleNotification(this);
+        System.out.println("OBSERVER: Payment created: " + id + " for amount: " + amount);
+        notifyObservers();
     }
 
     public void markAsPaid() {
         this.isPaid = true;
-        System.out.println("Payment marked as paid: " + this.description);
+        System.out.println("OBSERVER: Payment " + id + " marked as paid - notifying observers");
+        notifyObservers();
     }
+
+    public void addObserver(PaymentObserver observer) {
+        System.out.println("OBSERVER: Observer added to Payment " + id);
+        observers.add(observer);
+    }
+
+    public void removeObserver(PaymentObserver observer) {
+        System.out.println("OBSERVER: Observer removed from Payment " + id);
+        observers.remove(observer);
+    }
+
+    public void notifyObservers() {
+        System.out.println("OBSERVER: Payment " + id + " is notifying all " + observers.size() + " observers");
+        for (PaymentObserver observer : observers) {
+            observer.update(this);
+        }
+    }
+
 
     public void delete() {
         System.out.println("Payment deleted: " + this.description);

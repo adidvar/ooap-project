@@ -1,13 +1,16 @@
 package main.com.studentfinance.model;
 
+import main.com.studentfinance.lr.NotificationMemento;
+import main.com.studentfinance.lr.PaymentReminderNotification;
+
 import java.time.Duration;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
-public abstract class Notification {
+public class Notification {
     protected final String id;
-    protected final String message;
+    protected String message;
     protected Date triggerDate;
     protected boolean isDelivered;
     protected NotificationType type;
@@ -18,6 +21,14 @@ public abstract class Notification {
         this.message = message;
         this.isDelivered = false;
         this.status = NotificationStatus.CREATED;
+    }
+
+    public Notification(String message, Date triggerDate) {
+        this.id = UUID.randomUUID().toString();
+        this.message = message;
+        this.triggerDate = triggerDate;
+        this.isDelivered = false;
+        System.out.println("MEMENTO: Originator created with message: \"" + message + "\"");
     }
 
     public void create() {
@@ -41,6 +52,24 @@ public abstract class Notification {
             this.status = NotificationStatus.FAILED;
             return false;
         }
+    }
+
+    public PaymentReminderNotification paymentReminderNotification() {
+        return new PaymentReminderNotification("message", "triggerDate", new Date());
+    }
+
+    // Create memento to save current state
+    public NotificationMemento saveToMemento() {
+        System.out.println("MEMENTO: Saving current notification state to memento");
+        return new NotificationMemento(message, triggerDate, isDelivered);
+    }
+
+    // Restore from memento
+    public void restoreFromMemento(NotificationMemento memento) {
+        System.out.println("MEMENTO: Restoring notification state from memento");
+        this.message = memento.getMessage();
+        this.triggerDate = memento.getTriggerDate();
+        this.isDelivered = memento.isDelivered();
     }
 
     private boolean isInternetAvailable() {
