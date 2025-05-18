@@ -1,3 +1,7 @@
+package main.com.studentfinance.model;
+
+import java.util.Date;
+
 public class Transaction {
     private String id;
     private Double amount;

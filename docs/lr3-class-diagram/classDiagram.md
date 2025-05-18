@@ -7,6 +7,7 @@ classDiagram
         - String email
         - String passwordHash
         + viewDashboard()
+        + addPayment(Payment): void
     }
 
     class Balance {
@@ -37,6 +38,7 @@ classDiagram
         + markAsPaid()
         + delete()
         + setRecurring()
+        + isDueInDays(int days): boolean
     }
 
     class Notification {
@@ -45,11 +47,27 @@ classDiagram
         - Date triggerDate
         - Boolean isDelivered
         - NotificationType type
+        - NotificationStatus status
         + create()
-        + send()
+        + send(): boolean
         + cancel()
+        + schedule(Date triggerDate)
+        + retry()
+        + getStatus(): NotificationStatus
         + snooze(Duration)
     }
+    
+    class NotificationStatus {
+      <<enumeration>>
+      CREATED
+      SCHEDULED
+      SNOOZED
+      DELIVERED
+      FAILED
+      CANCELED
+      RETRY_SCHEDULED
+    }
+
 
     class NotificationType {
         <<enumeration>>
@@ -155,6 +173,7 @@ classDiagram
         + sendNotification(Notification)
         + getUserPreferences()
         + setUserPreferences()
+        + sendPaymentReminder(Student): void
     }
 
     class GoalManager {
