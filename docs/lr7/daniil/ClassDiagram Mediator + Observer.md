@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
 direction BT
 class NotificationManager {
