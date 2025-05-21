@@ -21,7 +21,6 @@ classDiagram
     ISender <|.. SimpleSender
     ISender <|.. SenderDecorator
     SenderDecorator <|-- LoggingDecorator
-    SenderDecorator <|-- PriorityDecorator
     ISender <|.. SenderProxy
     SenderProxy ..> ISender : controls access
     SenderDecorator ..> ISender : wraps
