@@ -1,3 +1,10 @@
+package main.com.studentfinance.service;
+
+import main.com.studentfinance.model.Transaction;
+
+import java.io.File;
+import java.util.List;
+
 public class ImportManager {
     private List<Transaction> transactions;
 
