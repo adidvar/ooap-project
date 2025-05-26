@@ -1,3 +1,5 @@
+package main.com.studentfinance.model;
+
 public class Category {
     private String id;
     private String name;

@@ -1,9 +1,13 @@
-import java.io.File;
+package main.com.studentfinance.service;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import com.studentfinance.model.*;
+import main.com.studentfinance.model.Balance;
+import main.com.studentfinance.model.Category;
+import main.com.studentfinance.model.Currency;
+import main.com.studentfinance.model.Transaction;
 
 public class FinanceManager {
     private List<Transaction> transactions;
